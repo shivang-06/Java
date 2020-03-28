@@ -31,8 +31,16 @@ public class Main {
                 }
                 i++;
             } else if (dir == 2) {
+                if(j<0){
+                    j++;
+                    break;
+                }
                 j--;
             } else if (dir == 3) {
+                if(i<0){
+                    i++;
+                    break;
+                }
                 i--;
             }
         }
