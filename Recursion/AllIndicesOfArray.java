@@ -65,9 +65,10 @@ public class Main {
 
     public static int[] allIndices(int[] arr, int x, int idx, int fsf) {
         // write ur code here
-        int[] indices = new int[fsf];
+        int[] indices;
 
-        if (idx == arr.length - 1) {
+        if (idx == arr.length) {
+            indices = new int[fsf];
             return indices;
         }
         
