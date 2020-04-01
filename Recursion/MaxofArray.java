@@ -49,8 +49,8 @@ public class Main {
 
     public static int maxOfArray(int[] arr, int idx) {
         int max = Integer.MIN_VALUE;
-        if (idx == arr.length) {
-            return 0;
+        if (idx == arr.length-1) {
+            return arr[idx];
         }
         
        max =  maxOfArray(arr, idx + 1);
