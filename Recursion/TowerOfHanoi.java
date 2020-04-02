@@ -61,11 +61,11 @@ public class Main {
             return;
         }
 
-        toh(n - 1, t1, t3, t2);
+        toh(n - 1, t1, t3, t2); // Tower 1 to tower 3
         
         System.out.println(n + "[" + t1 + " -> " + t2 + "]");
         
-        toh(n - 1, t3, t2, t1);
+        toh(n - 1, t3, t2, t1); // Tower 3 to tower 2 
 
 
     }
