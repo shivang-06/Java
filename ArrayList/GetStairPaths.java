@@ -1,23 +1,55 @@
-/*Question
- 1. You are given a number n representing number of stairs in a staircase.
-2. You are standing at the bottom of staircase. You are allowed to climb 1 step, 2 steps or 3 steps in one move.
-3. Complete the body of getStairPaths function - without changing signature - to get the list of all paths that can be used to climb the staircase up.
-Use sample input and output to take idea about output.
+import java.io.*;
+import java.util.*;
 
-Note -> The online judge can't force you to write the function recursively but that is what the spirit of question is.
-Write recursive and not iterative logic. The purpose of the question is to aid learning recursion and not test you.
+public class Main {
 
-                               
-Input Format
-A number n
-Output Format
-Contents of the arraylist containing paths as shown in sample output
-Constraints
-0 <= n <= 10
-Sample Input
-3
-Sample Output
-[111, 12, 21, 3]*/
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        ArrayList < String > list = getMazePaths(0, 0, n - 1, m - 1);
+        System.out.println(list);
+    }
+
+    // sr - source row
+    // sc - source column
+    // dr - destination row
+    // dc - destination column
+    public static ArrayList < String > getMazePaths(int sr, int sc, int dr, int dc) {
+        ArrayList < String > finAnswer = new ArrayList < > ();
+        if (sc > dc || sr > dr) {// when increment column it may go out of matrix!
+            ArrayList < String > invalid = new ArrayList < > ();
+            return invalid;
+        }
+        if (sr == dr && sc == dc) {
+            ArrayList < String > base = new ArrayList < > ();
+            base.add("");
+            return base;
+        }
+
+        for (int step = 1; step <= dc; step++) {
+            ArrayList < String > answerCol = getMazePaths(sr, sc + step, dr, dc);
+            for (String val: answerCol) {
+                finAnswer.add("h" + step + val);
+            }
+        }
+        for (int step = 1; step <= dr; step++) {
+            ArrayList < String > answerRow = getMazePaths(sr + step, sc, dr, dc);
+            for (String val: answerRow) {
+                finAnswer.add("v" + step + val);
+            }
+        }
+        for (int step = 1; step <= dc && step <= dr; step++) {
+            ArrayList < String > answerDia = getMazePaths(sr + step, sc + step, dr, dc);
+            for (String val: answerDia) {
+                finAnswer.add("d" + step + val);
+            }
+        }
+
+        return finAnswer;
+    }
+
+}
 import java.io.*;
 import java.util.*;
 
