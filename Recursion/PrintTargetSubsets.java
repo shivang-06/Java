@@ -1,3 +1,4 @@
+
 /*Question
  1. You are given a number n, representing the count of elements.
 2. You are given n numbers.
@@ -66,12 +67,12 @@ public class Main {
             }
             return;
         }
-        //Consider to be included in the answer
-        if(arr[idx]+sos<=tar)
-        printTargetSumSubsets(arr, idx + 1, set + arr[idx] + ", ", sos + arr[idx], tar);
-        //didn't consider to be included in the answer
+        // Consider to be included in the answer
+        if (arr[idx] + sos <= tar)
+            printTargetSumSubsets(arr, idx + 1, set + arr[idx] + ", ", sos + arr[idx], tar);
+        // didn't consider to be included in the answer
         printTargetSumSubsets(arr, idx + 1, set, sos, tar);
-    
+
     }
 
 }

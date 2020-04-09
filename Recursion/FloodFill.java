@@ -1,3 +1,4 @@
+
 /*Question
  1. You are given a number n, representing the number of rows.
 2. You are given a number m, representing the number of columns.
@@ -61,7 +62,6 @@ public class Main {
         boolean[][] visited = new boolean[n][m];
         floodfill(maze, 0, 0, "", visited);
 
-
     }
 
     public static void floodfill(int[][] maze, int row, int col, String psf, boolean[][] visited) {
@@ -71,28 +71,28 @@ public class Main {
             return;
         }
 
-        if (visited[row][col] == true || maze[row][col]==1) {
+        if (visited[row][col] == true || maze[row][col] == 1) {
             return;
         }
 
         // if (row < 0 || col < 0||row >= maze.length ||col >= maze[0].length) {
-        //     return;
+        // return;
         // }
 
         visited[row][col] = true;
-        //top
+        // top
         if (row - 1 >= 0)
             floodfill(maze, row - 1, col, psf + "t", visited);
 
-        //left
+        // left
         if (col - 1 >= 0)
             floodfill(maze, row, col - 1, psf + "l", visited);
 
-        //down
+        // down
         if (row + 1 < maze.length)
             floodfill(maze, row + 1, col, psf + "d", visited);
 
-        //right
+        // right
         if (col + 1 < maze[0].length)
             floodfill(maze, row, col + 1, psf + "r", visited);
 
