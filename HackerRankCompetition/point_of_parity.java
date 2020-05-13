@@ -40,3 +40,33 @@ Sample Output 1
 
 3
 */
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+    Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] a=new int[n];
+        for(int i=0;i<n;i++){
+            a[i]=sc.nextInt();
+        }
+        
+        for(int i=0;i<n;i++){
+            int fin=0;
+        int sum=0;
+            for(int j=0;j<i;j++){
+                fin+=a[j];
+            }
+            for(int k=n-1;k>i;k--){
+                sum+=a[k];
+            }
+            if(fin==sum)
+            {System.out.println(i);
+            return;} 
+        }
+        System.out.println("-1");
+        
+    }
+}
