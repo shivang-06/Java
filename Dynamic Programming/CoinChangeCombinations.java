@@ -1,3 +1,4 @@
+
 /*Question
     1. You are given a number n, representing the count of coins.
 2. You are given n numbers, representing the denominations of n coins.
@@ -49,8 +50,8 @@ public class Main {
 
         dp[0] = 1;
         for (int j = 0; j < n; j++) {
+            int coin = change[j];
             for (int i = 1; i <= amt; i++) {
-                int coin = change[j];
                 if (i - coin >= 0) {
                     dp[i] += dp[i - coin];
                 }
