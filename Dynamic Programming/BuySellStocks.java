@@ -40,13 +40,13 @@ public class Main {
         for (int i = 0; i < n; i++) {
             price[i] = sc.nextInt();
         }
-        int min = price[0];
-        int maxProfit = 0;
+        int min = price[0]; //minimun price
+        int maxProfit = 0; 
         for (int i = 0; i < n; i++) {
             if (price[i] < min) {
                 min = price[i];
             }
-            int profit = price[i] - min;
+            int profit = price[i] - min;//profit after selling a stock
             if (profit > maxProfit) {
                 maxProfit = profit;
             }
