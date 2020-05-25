@@ -45,7 +45,7 @@ public class Main {
                     while (st.peek() != '(') {
                         st.pop();
                     }
-                    st.pop();
+                    st.pop(); // to remove opening bracket corresponding to the closing bracket encountered.
                 }
 
             } else {
