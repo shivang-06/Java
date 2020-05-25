@@ -71,3 +71,57 @@ public class Main {
     }
 
 }
+//**************************Approach - 2 ********************************** */
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(System.in);
+        String exp = sc.nextLine();
+        boolean flag = false;
+        Stack < Character > st = new Stack < > ();
+        for (int i = 0; i < exp.length(); i++) {
+            char ch = exp.charAt(i);
+            if (ch == '(' || ch == '[' || ch == '{') {
+                flag= false;
+                st.push(ch);
+            }
+
+            if (ch == ')') {
+                if (st.size() == 0 || st.peek() != '(') {
+                    flag = false;
+                } else {
+                    st.pop();
+                    flag = true;
+                }
+            } else if (ch == ']') {
+                if (st.size() == 0 || st.peek() != '[') {
+                    flag = false;
+                } else {
+                    st.pop();
+                    flag = true;
+                }
+            } else if (ch == '}') {
+                if (st.size() == 0 || st.peek() != '{') {
+                    flag = false;
+                } else {
+                    st.pop();
+                    flag = true;
+                }
+            }
+        }
+
+        if (st.size() == 0 && flag==true) {
+            flag = true;
+        } else {
+            flag = false;
+        }
+        
+        System.out.println(flag);
+
+    }
+
+}
