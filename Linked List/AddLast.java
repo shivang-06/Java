@@ -42,18 +42,15 @@ public class Main {
         void addLast(int val) {
             // Write your code here
             Node nn = new Node();
+            nn.data = val;
             if (head == null && tail == null) {
-                nn.data = val;
-                nn.next = null;
                 head = nn;
                 tail = nn;
-            }else {
+            } else {
                 tail.next = nn;
-                nn.data = val;
-                nn.next = null;
                 tail = nn;
             }
-            
+
             size++;
         }
     }
