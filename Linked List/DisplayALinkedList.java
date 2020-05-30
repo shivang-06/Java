@@ -71,11 +71,11 @@ public class Main {
             if (head == null) {
                 return;
             }
-            while (nn.next != null) {
+            while (nn != null) {
                 System.out.print(nn.data + " ");
                 nn = nn.next;
             }
-            System.out.print(nn.data);
+            // System.out.print(nn.data);
             System.out.println();
         }
     }
