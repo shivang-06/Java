@@ -88,9 +88,12 @@ public class Main {
           head = null;
           tail = null;
           size--;
-      }else{
-          head = head.next;
-          size--;
+      }else{  
+        Node temp = new Node();
+        temp = head;
+        head = head.next;
+        temp.next =null;
+        size--;
       }
     }
   }
