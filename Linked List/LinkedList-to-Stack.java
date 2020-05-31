@@ -69,11 +69,19 @@ public class Main {
 
     int pop() {
       // write your code here
+      if(list.size() == 0 ){
+          System.out.println("Stack underflow");
+          return -1;
+      }
       return list.removeFirst();
     }
 
     int top() {
       // write your code here
+      if(list.size() == 0 ){
+          System.out.println("Stack underflow");
+          return -1;
+      }
       return list.getFirst();
     }
   }
