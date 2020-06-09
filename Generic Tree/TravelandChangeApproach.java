@@ -1,6 +1,8 @@
 /*
   In this code we need to update tree values such as height,size,total, minimum
   etc. without returning the items from a function
+
+  This approach is known as "TRAVEL AND CHANGE"
  */
 import java.util.*;
 import java.io.*;
