@@ -76,7 +76,7 @@ public class Main {
             successor = node;
             state = 2;
         } else if (state == 2) {
-
+            return;
         }
         for (Node child: node.children) {
             predecessorAndSuccessor1(child, data);
