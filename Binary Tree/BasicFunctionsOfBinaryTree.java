@@ -129,7 +129,7 @@ public class Main {
     }
 
     public static int max(Node node) {
-        // write your code here
+        
         if(node == null){
             return Integer.MIN_VALUE;
         }
@@ -142,7 +142,7 @@ public class Main {
     }
 
     public static int height(Node node) {
-        // write your code here
+        
         if(node == null){
             return -1;
         }
