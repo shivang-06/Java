@@ -126,6 +126,7 @@ public class Main {
     Node rTree = createLeftCloneTree(node.right);
     //clone creation
     Node clone = new Node(node.data,null,null);
+    //connection of clone node to the tree
     clone.left = lTree;
     node.left = clone;
     node.right = rTree;
