@@ -113,11 +113,10 @@ public class Main {
             return nn;
         }
         if (data < node.data) {
-            Node ln = add(node.left, data);
-            node.left = ln;
+            node.left = add(node.left, data);
         } else if (data > node.data) {
-            Node rn = add(node.right, data);
-            node.right = rn;
+            node.right= add(node.right, data);
+            
         } else {
             //data found => do nothing
         }
