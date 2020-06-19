@@ -27,9 +27,9 @@ public class Main {
             char ch = str.charAt(idx);
             if(freqMap.containsKey(ch)){
                 //ch key already exists
-                int of = freqMap.get(ch);
-                int nf = of+1;
-                freqMap.put(ch,nf);
+                int of = freqMap.get(ch); // old frequency
+                int nf = of +1; // new frequency
+                freqMap.put(ch, nf); // update hashMap
             }else{
                 freqMap.put(ch,1);
             }
