@@ -87,9 +87,7 @@ public class Main {
             data.add(val);
             upHeapify(data.size() - 1); // data is always added in last.
         }
-        public void downHeapify(int pi){
-            
-        }
+        
         public void downheapify(int pi){
             int lci = (pi*2) + 1;
             int rci = (pi*2) + 2;
