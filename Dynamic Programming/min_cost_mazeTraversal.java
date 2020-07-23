@@ -6,11 +6,6 @@
 5. You are allowed to move 1 cell right (h move) or 1 cell down (v move) in 1 motion.
 6. Each cell has a value that will have to be paid to enter that cell (even for the top-left and bottom-right cell).
 7. You are required to traverse through the matrix and print the cost of path which is least costly.
-
-                               
-                               
-                               
-                               
                                
 Input Format
 A number n
@@ -37,6 +32,7 @@ Sample Input
 2 7 0 8 5 1
 Sample Output
 23*/
+
 import java.io.*;
 import java.util.*;
 
