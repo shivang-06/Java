@@ -23,46 +23,48 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    public static int fib_rec(int n) { // *****recursive approach*********
-        if (n == 0 || n == 1) return n;
+updated 
+  public static int fib_rec(int n) { // *****recursive approach*********
+    if (n == 0 || n == 1) return n;
 
-        int fibNm1 = fib_rec(n - 1);
-        int fibNm2 = fib_rec(n - 2);
+    int fibNm1 = fib_rec(n - 1);
+    int fibNm2 = fib_rec(n - 2);
 
-        return fibNm1 + fibNm2;
+    return fibNm1 + fibNm2;
+  }
+
+  public static int fib_mem(int n, int dp[]) { //************** memoization approach**************
+    if (n == 0 || n == 1) return dp[n] = n; //in this statement first assignment is done then return is done.
+    if (dp[n] != 0) {
+      //answer already exist
+      return dp[n];
     }
-    public static int fib_mem(int n, int dp[]) { //************** memoization approach**************
-        if (n == 0 || n == 1) return dp[n] = n; //in this statement first assignment is done then return is done.
-        if (dp[n] != 0) {
-            //answer already exist
-            return dp[n];
-        }
-        int fibNm1 = fib_mem(n - 1, dp);
-        int fibNm2 = fib_mem(n - 2, dp);
-        return dp[n] = (fibNm1 + fibNm2); // First assignment will be done then return will be performed.
+    int fibNm1 = fib_mem(n - 1, dp);
+    int fibNm2 = fib_mem(n - 2, dp);
+    return dp[n] = (fibNm1 + fibNm2); // First assignment will be done then return will be performed.
+  }
+
+  public static int fib_tab(int n) { //********Tabulation approach**********
+    int[] dp = new int[n + 1];
+
+    for (int i = 0; i <= n; i++) {
+      if (i == 1 || i == 0) {
+        dp[i] = i;
+        continue; //to continue for loop if answer already exist for current iteration.
+      }
+      int fibNm1 = dp[i - 1];
+      int fibNm2 = dp[i - 2];
+
+      dp[i] = (fibNm1 + fibNm2);
     }
-    public static int fib_tab(int n) { //********Tabulation approach**********
-        int[] dp = new int[n + 1];
+    return dp[n];
+  }
 
-        for (int i = 0; i <= n; i++) {
-            if (i == 1 || i == 0) {
-                dp[i] = i;
-                continue; //to continue for loop if answer already exist for current iteration.
-            }
-            int fibNm1 = dp[i - 1];
-            int fibNm2 = dp[i - 2];
-
-            dp[i] = (fibNm1 + fibNm2);
-
-        }
-        return dp[n];
-    }
-    public static void main(String[] args) throws Exception {
-        // write your code here
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        // System.out.println(fib_rec(n));
-        System.out.println(fib_mem(n, new int[n + 1]));
-    }
-
+  public static void main(String[] args) throws Exception {
+    // write your code here
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    // System.out.println(fib_rec(n));
+    System.out.println(fib_mem(n, new int[n + 1]));
+  }
 }
