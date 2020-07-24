@@ -23,7 +23,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-updated 
+
   public static int fib_rec(int n) { // *****recursive approach*********
     if (n == 0 || n == 1) return n;
 
