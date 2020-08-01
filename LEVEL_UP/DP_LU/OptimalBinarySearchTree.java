@@ -62,7 +62,7 @@ public class Main {
             return dp[si][ei];
         }
         int cost = costofNodes(freq,si,ei);
-        
+
         int min = Integer.MAX_VALUE;
         for (int cp = si; cp <= ei; cp++) {
             int leftCost = cp - 1 >= si ? optimalbst(freq, si, cp - 1,dp) : 0;
@@ -86,6 +86,103 @@ public class Main {
             frequency[i] = scn.nextInt();
         }
         System.out.println(optimalbst(frequency, 0, n - 1,new int[n][n]));
+    }
+
+}
+
+
+// ------------------ 2nd Approach of cost of all nodes --------------------------
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    private static int optimalbst(int[] freq, int si, int ei, int[][] dp) {
+        //write your code here
+        if (si == ei) {
+            return dp[si][ei] = freq[si];
+
+        }
+        if (dp[si][ei] != 0) {
+            return dp[si][ei];
+        }
+        int cost = 0; //cost of all nodes
+        int min = Integer.MAX_VALUE;
+        for (int cp = si; cp <= ei; cp++) {
+            cost += freq[cp]; // at each point cut is made so no need to take loop to calculate cost of all nodes
+            int leftCost = cp - 1 >= si ? optimalbst(freq, si, cp - 1, dp) : 0;
+            int rightCost = cp + 1 <= ei ? optimalbst(freq, cp + 1, ei, dp) : 0;
+            int myCost = leftCost + rightCost;
+            min = Math.min(myCost, min);
+        }
+        min += cost; // added cost of all nodes
+        return dp[si][ei] = min;
+    }
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int[] keys = new int[n];
+        int[] frequency = new int[n];
+        for (int i = 0; i < n; i++) {
+            keys[i] = scn.nextInt();
+        }
+        for (int i = 0; i < n; i++) {
+            frequency[i] = scn.nextInt();
+        }
+        System.out.println(optimalbst(frequency, 0, n - 1, new int[n][n]));
+        // System.out.println(obst(frequency));
+    }
+}
+
+// -------------- Tabulation Method -------------------
+import java.io.*;
+import java.util.*;
+
+public class Main {    
+    
+    private static int obst(int[] freq) {
+        int n = freq.length;
+        int[][] dp = new int[n][n];
+        
+        for (int gap = 0; gap < n; gap++) {
+            for (int i = 0, j = gap; j < n; i++, j++) {
+                int si = i, ei = j;
+
+                if (si == ei) {
+                    dp[si][ei] = freq[si];
+                    continue;
+                }
+
+                int cost = 0;
+                int min = Integer.MAX_VALUE;
+
+                for (int cp = si; cp <= ei; cp++) {
+                    cost += freq[cp];
+                    int lcost = cp - 1 >= si ? dp[si][cp - 1] : 0;
+                    int rcost = cp + 1 <= ei ? dp[cp + 1][ei] : 0;
+                    int myCost = lcost + rcost;
+                    min = Math.min(min,myCost);
+                }
+                
+                min += cost;
+                dp[si][ei] = min;
+            }
+        }
+        
+        return dp[0][n - 1];
+    }
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int[] keys = new int[n];
+        int[] frequency = new int[n];
+        for (int i = 0; i < n; i++) {
+            keys[i] = scn.nextInt();
+        }
+        for (int i = 0; i < n; i++) {
+            frequency[i] = scn.nextInt();
+        }
+        // System.out.println(optimalbst(frequency, 0, n - 1, new int[n][n]));
+        System.out.println(obst(frequency));
     }
 
 }
