@@ -36,19 +36,7 @@ public class Main {
                 if (gap == 0) {
                     trueDp[si][ei] = str1.charAt(si) == 'T' ? 1 : 0;
                     falseDp[si][ei] = str1.charAt(si) == 'F' ? 1 : 0;
-                } else if (gap == 1) {
-                    // (si,si) => left expression (ei,ei)=> right expression
-                    if (str2.charAt(si) == '^') {
-                        trueDp[si][ei] = (falseDp[si][si] * trueDp[ei][ei]) + (trueDp[si][si] * falseDp[ei][ei]);
-                        falseDp[si][ei] = (falseDp[si][si] * falseDp[ei][ei]) + (trueDp[si][si] * trueDp[ei][ei]);
-                    } else if (str2.charAt(si) == '&') {
-                        trueDp[si][ei] = (trueDp[si][si] * trueDp[ei][ei]);
-                        falseDp[si][ei] = (trueDp[si][si] * falseDp[ei][ei]) + (falseDp[si][si] * trueDp[ei][ei]) + (falseDp[si][si] * falseDp[ei][ei]);
-                    } else {
-                        trueDp[si][ei] = (trueDp[si][si] * falseDp[ei][ei]) + (falseDp[si][si] * trueDp[ei][ei]) + (trueDp[si][si] * trueDp[ei][ei]);
-                        falseDp[si][ei] = (falseDp[si][si] * falseDp[ei][ei]);
-                    }
-                } else {
+                }  else {
 
                     for (int cp = si; cp < ei; cp++) {
                         char op = str2.charAt(cp);
