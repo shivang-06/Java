@@ -72,3 +72,60 @@ public class Main {
     }
 
 }
+
+// ------------------- Updated approach -----------------------
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static class pair {
+        int tc = 0, fc = 0;
+    }
+    public static int solution(String str1, String str2) {
+        //write your code here
+        int n = str1.length();
+        int[][] trueDp = new int[n][n];
+        int[][] falseDp = new int[n][n];
+        // pair res = new pair();
+        int tc = 0,fc =0;
+        for (int gap = 0; gap < n; gap++) {
+            for (int si = 0, ei = gap; ei < n; si++, ei++) {
+                if (gap == 0) {
+                    trueDp[si][ei] = str1.charAt(si) == 'T' ? 1 : 0;
+                    falseDp[si][ei] = str1.charAt(si) == 'F' ? 1 : 0;
+                } else {
+
+                    for (int cp = si; cp < ei; cp++) {
+                        char op = str2.charAt(cp);
+                        int left_tc = trueDp[si][cp], left_fc = falseDp[si][cp];
+                        int right_tc = trueDp[cp + 1][ei], right_fc = falseDp[cp + 1][ei];
+
+                        if (op == '^') {
+                            tc = (left_tc * right_fc) + (left_fc * right_tc);
+                            fc = (left_fc * right_fc) + (left_tc * right_tc);
+                        } else if (op == '&') {
+                            tc = (left_tc * right_tc);
+                            fc = (left_tc * right_fc) + (left_fc * right_tc) + (left_fc * right_fc);
+                        } else if (op == '|') {
+                            tc = (left_tc * right_tc) + (left_tc * right_fc) + (left_fc * right_tc);
+                            fc = (left_fc * right_fc);
+                        }
+                        trueDp[si][ei] += tc;
+                        falseDp[si][ei] +=fc;
+                    }
+
+                }
+            }
+        }
+
+        return trueDp[0][n - 1];
+    }
+
+    public static void main(String[] args) {
+        Scanner scn = new Scanner(System.in);
+        String s1 = scn.next();
+        String s2 = scn.next();
+        System.out.println(solution(s1, s2));
+    }
+
+}
