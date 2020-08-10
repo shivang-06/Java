@@ -55,4 +55,31 @@ public class BoxQueenPermutationsCombination{
         }
         return count
     }
+    // geeksfor geeks = WordBreak questiion ====================================
+    public static int  wordBreak(String ques,int idx,String ans,int maxLenWord, HashSet<String> words ) {
+        if(idx == ques.length()){
+            System.out.println(ans);
+            return 1;
+        }
+        for(int i=idx;i<=(idx+maxLenWord+1) && i<=ques.length(); i++){
+            String str = ques.substring(idx,i);
+            if(words.contains(str)){
+
+                count+= wordBreak(ques,i,ans+str+" ",maxLenWord,words);
+            }
+        }
+        return count;
+    }
+    public static int  wordBreak() {
+        String ques = "ilikesamsungandmango";
+        String[] word = {"mobile","samsung","sam","sung","man","mango","icecream","and","go","i","like","ice","cream","ilike"};
+
+        HashSet<String> words = new HashSet();
+        int maxLenWord = 0;
+        for(String s:word){
+            maxLenWord = Math.max(maxLenWord,s.length());
+            words.add(s);
+        }
+        System.out.println(wordBreak(ques,0,"",maxLenWord,words));
+    }
 }
