@@ -1,8 +1,8 @@
 public class CrossWord{
     public static void main(String[] args) {
-        
+        crossWord();
     }
-    
+
     public static void dislayCrossWord(char[][] board){
         for(char[] bo: board){
             for(char b: bo){
@@ -13,12 +13,23 @@ public class CrossWord{
     }
 
     public static boolean canPlaceH(char[][] board,int r,int c,String word){
-
+        if(board[r][c] =='+'){
+            return false;
+        }else{
+            for(int i=0;i<word.length();i++){
+                if(board[r][c+i] == '-'){
+                    continue;
+                }else{
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 
     public static boolean[] PlaceH(char[][] board,int r,int c,String word){
-        boolean[] loc=new boolean[word.length];
-        for(int i=0;i<word.length;i++){
+        boolean[] loc=new boolean[word.length()];
+        for(int i=0;i<word.length();i++){
             if(board[r][c+i]=='-'){
                 loc[i]=true;
                 board[r][c+i]=word.charAt(i);
@@ -37,12 +48,23 @@ public class CrossWord{
     }
 
     public static boolean canPlaceV(char[][] board,int r,int c,String word){
-
+        if(board[r][c] == '+'){
+            return false;
+        }else{
+            for(int i=0;i<word.length();i++){
+                if(board[r+i][c] == '-'){
+                    continue;
+                }else{
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 
     public static boolean[] PlaceV(char[][] board,int r,int c,String word){
-        boolean[] loc=new boolean[word.length];
-        for(int i=0;i<word.length;i++){
+        boolean[] loc=new boolean[word.length()];
+        for(int i=0;i<word.length();i++){
             if(board[r+i][c]=='-'){
                 loc[i]=true;
                 board[r+i][c]=word.charAt(i);
