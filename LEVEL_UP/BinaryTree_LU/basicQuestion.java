@@ -94,6 +94,7 @@ public class basicQuestion{
         width(node.right,level+1,minMax);
         return minMax[1] - minMax[0];
     }
+    
     public static void kdown(Node node,int k){
         if(node == null) return;
         if(k == 0 ){
