@@ -91,7 +91,7 @@ public class BfsLevelOrder {
         
         allSolution(node.left,level+1,target,pair);
         //inorder predecessor & successsor
-        if(node.data == target && pair.pred == null) pair.pred = pairprev;
+        if(node.data == target && pair.pred == null) pair.pred = pair.prev;
         if(pair.prev != null && pair.prev.data == target) pair.succ = node;
         pair.prev = node;
         allSolution(node.right,level+1,target,pair);
