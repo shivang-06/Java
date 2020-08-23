@@ -13,10 +13,21 @@ public class BfsLevelOrder {
         solve();
     }
     public static void solve(){
-        int[] arr={10,20,40,-1,-1,50,80,-1,-1,90,-1,-1,30,60,100,-1,-1,-1,70,110,-1,-1,120,-1,-1};
-        Node root = constructTree(arr);
+        // int[] arr={10,20,40,-1,-1,50,80,-1,-1,90,-1,-1,30,60,100,-1,-1,-1,70,110,-1,-1,120,-1,-1};
+
+        Node root = constructBST()
         allSolutionPair pair = new allSolutionPair();
         allSolution(root,0,80,pair);
+    }
+    public static Node constructBST(ArrayList<Integer> arr,int si,int ei){
+        if(si>ei) return null; 
+
+        int mid = (si + ei ) >> 1;
+        Node node = new Node(arr.get(mid));
+
+        node.left = constructBST(arr,si,mid - 1);
+        node.right = constructBST(arr,mid + 1, ei);
+        return node;
     }
     public static Node constructTree(int[] arr){
         if(idx==arr.length || arr[idx]==-1){
@@ -112,7 +123,7 @@ public class BfsLevelOrder {
                 if(curr.right != null){
                     pred = curr.right;
                     while(pred.left != null ){
-                        pred =pred.left;
+                        succ =pred.left;
                     }
                 }
                 break;
@@ -125,5 +136,24 @@ public class BfsLevelOrder {
             }
         }
     }
+    public static Node addNode(Node node,int data){
+        if(node == null ) return new Node(data);
+        if(data < node.data) node.left = addNode(node.left,data);
+        else node.right = addNode(node.right,data);
+        return node;
+    }
+    public static Node removeData(Node node,int data) {
+        if(node == null ) return null;
+        
+        if(data < node.data) node.left = removeData(node.left,data);
+        else if(data<ndoe.data) node.right = removeData(node.right,data);
+        else{
+            if(node.left == null || node.right == null ||) return node.left != null ? node.left: node.right;
 
+            int minEle = minimum(node.right);
+            node.data = minEle;
+            node.right = removeData(node.right,minEle);
+        }
+        return node;
+    }
 }
