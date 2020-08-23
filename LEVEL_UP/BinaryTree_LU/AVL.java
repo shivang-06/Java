@@ -54,14 +54,16 @@ public class AVL{
             if(node.left.bal == 1){ //LL
                 return rightRotation(node);
             }else{  //LR
-                
+                node.left = leftRotation(node.left);
+                return rightRotation(node);
             }
 
         }else if(node.bal == -2{
             if(node.right.right == -1){ //RR
                 return leftRotation(node);
             }else{ //RL
-
+                node.right = rightRotation(node.right);
+                return leftRotation(node);
             }
         }
     }
@@ -69,8 +71,9 @@ public class AVL{
         int lh=-1;
         int rh=-1;
 
-        lh = node.left.height;
-        rh = node.right.height;
+        if(node.left != null) lh = node.left.height;
+        if(node.right != null) rh = node.right.height;
+
         node.bal = lh - rh;
         node.height = Math.max(lh,rh) + 1;
     }
