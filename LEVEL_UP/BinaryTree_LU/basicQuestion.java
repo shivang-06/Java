@@ -46,16 +46,16 @@ public class basicQuestion{
        
         return new int[]{dia , height};
     }    
-    // public static int[] diameter_03(Node node,int[] res){
-    //     if(node==null) return -1;
+    public static int diameter_03(Node node,int[] res){
+        if(node==null) return -1;
         
-    //     int lh = diameter_03(node.left,res);   // left result
-    //     int rh = diameter_03(node.right,res);  // right result
+        int lh = diameter_03(node.left,res);   // left result
+        int rh = diameter_03(node.right,res);  // right result
 
-    //     res[0] = Math.max(res[0],lh + rh + 2);
+        res[0] = Math.max(res[0],lh + rh + 2);
 
-    //     return Math.max(lh,rh) + 1;
-    // }
+        return Math.max(lh,rh) + 1;
+    }
     static int idx = 0;
     public static Node constructTree(int[] arr){
         if(idx==arr.length || arr[idx]==-1){
