@@ -1,4 +1,8 @@
 public class loo1{
+
+    public static void main(String[] args) {
+        solve();
+    }
     public static clss Node{
         int data = 0;
         ArrayList<Node> childs = new ArrayList<>();
@@ -17,5 +21,21 @@ public class loo1{
             }
         }
         return st.peek();
+    }
+    public void display(Node root){
+        if(root == -1){
+            system.out.print(".");
+        }
+        System.out.print(root.data +" -> ");
+        for(Node a:root.childs){
+            display(a);
+        }
+    }
+
+    public static void solve(){
+        int[] arr={10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 100, -1, 110, -1, -1, 90, -1, -1, 40, 120, 140, -1, 150, -1, -1, -1,-1};
+        Node root = constructGTree(arr);
+        display(root);
+
     }
 }
