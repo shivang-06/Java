@@ -121,11 +121,23 @@ public class l001{
         }
         
     }
+    public static Node linearise(Node node){
+        if(node.childs.size() == 0) return node;
+        Node oTail = linearise(node.childs.get(node.childs.size()-1)); // overall tail
+        for(int i = node.childs.size()-2;i>=0;i--){
+            Node tail = linearise(node.childs.get(i));
+            tail.childs.add(node.childs.get(i+1));
+            node.childs.remove(node.childs.size()-1);
+        }
+        return oTail;
+    }
     public static void solve(){
         int[] arr={10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 100, -1, 110, -1, -1, 90, -1, -1, 40, 120, 140, -1, 150, -1, -1, -1,-1};
         Node root = constructGTree(arr);
         // display(root);
         // zigZag(root);
-        lca(root,40,90);
+        // lca(root,40,90);
+        linearise(root);
+        display(root);
     }
 }
