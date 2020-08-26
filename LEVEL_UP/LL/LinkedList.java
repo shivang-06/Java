@@ -1,4 +1,4 @@
-public class LinkedList{
+public class linkedlist{
     private class Node{
         int data = 0;
         Node next = null;
@@ -35,7 +35,7 @@ public class LinkedList{
         addFirtstNode(node);
     }
 
-    private void addLastNode(int data){
+    private void addLastNode(Node node){
         if(this.head == null){
             this.head = node;
             this.tail = node;
@@ -51,6 +51,24 @@ public class LinkedList{
         addLastNode(node);
     }
 
+    private void addNodeAt(int idx,Node node){
+        if(idx == 0) addFirtstNode(node);
+        else if(idx == this.size) addLastNode(node);
+        else{
+            Node prev = getNodeAt(idx-1);
+            Node forw = prev.next;
+
+            prev.next = node;
+            node.next = forw;
+            this.size++;
+        }
+    }
+    public void addAt(ind idx){
+        if(idx == 0) addFirst();
+        else if(idx == this.size-1) addLast();
+        else addNodeAt();
+    }
+
     //====================== Remove ================
     private Node removeFirstNode(){
         Node rn = this.head;
@@ -64,7 +82,7 @@ public class LinkedList{
         this.size--;
         return rn;
     }
-    public int removeFirst() throw Exception{
+    public int removeFirst() throws Exception{
         if(this.size == 0){
             throw new Exception("EmptyList");
         }
@@ -72,14 +90,48 @@ public class LinkedList{
         return new rnode.data;
         
     }
-    private Node removeFirstNode(){
-
+    private Node removeLastNode(){
+        Node rn = this.tail;
+        if(this.size == 1){
+            this.head = null;
+            this.tail = null;
+        }else{
+            Node secondLastNode = getNodeAt(this.size-2);
+            secondLastNode.next = null;
+            this.tail = secondLastNode;
+        }
+        rn.next = null;
+        this.size--;
+        return rn;
     }
-    public int removeFirst() throw Exception{
+    public int removeLast() throws Exception{
         if(this.size == 0){
             throw new Exception("EmptyList");
         }
-        
+        Node rn = removeLastNode();
+        return rn.data;
+    }
+    private Node removeNodeAt(int idx){
+        if(idx == 0){
+            return removeFirstNode();
+        }else if(idx == this.size-1){
+            return removeLastNode();
+        }else{
+            Node prev = getNodeAt(idx-1);
+            Node rnode = prev.next;
+            prev.next = prev.next.next;
+            rnode.next = null;
+            this.size--;
+            return rnode;
+        }
+    }
+    public int removeAt(int idx) throws Exception{
+        if(idx < 0 || idx>= this.size){
+            throw new Exception("NullPointer");
+        }
+        node rnode = removeNodeAt(idx);
+        return rnode.data;
+
     }
     // =====================  Get ========================
     public int getFirst() throws Exception{
@@ -93,5 +145,20 @@ public class LinkedList{
             throw new Exception "EmptyList";
         }
         return this.tail.data;
+    }
+    private Node getNodeAt(int idx){
+        Node node = this.head;
+        while(idx-->0){
+            node = node.next;
+        }
+        return node;
+    }
+    public int getAt(int idx){
+        if(idx == 0) return getFirst();
+        else if(idx == this.size-1) return getLast();
+        else{
+            Node rnode = getNodeAt(idx);
+            return rnode.data;
+        }
     }
 }
