@@ -167,4 +167,15 @@ public class linkedlist{
             return rnode.data;
         }
     }
+
+    public String toString(){
+        Node temp = this.head;
+        String str = "( ";
+        while(temp!=null){
+            str += temp.data +", ";
+            temp = temp.next;
+        }
+        str+= ")";
+        return str;
+    }
 }
