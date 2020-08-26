@@ -18,6 +18,19 @@ public class linkedlist{
 
     public boolean isEmpty(){
         return this.size == 0;
+
+    }
+
+    @override // check sir's github for stringbuilder implementation of this function.
+    public String toString(){
+        Node temp = this.head;
+        String str = "( ";
+        while(temp!=null){
+            str += temp.data +", ";
+            temp = temp.next;
+        }
+        str+= ")";
+        return str;
     }
     // ================= add ============================
     private void addFirstNode(Node node){
@@ -167,15 +180,5 @@ public class linkedlist{
             return rnode.data;
         }
     }
-
-    public String toString(){
-        Node temp = this.head;
-        String str = "( ";
-        while(temp!=null){
-            str += temp.data +", ";
-            temp = temp.next;
-        }
-        str+= ")";
-        return str;
-    }
+    
 }
