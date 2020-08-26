@@ -153,7 +153,10 @@ public class linkedlist{
         }
         return node;
     }
-    public int getAt(int idx){
+    public int getAt(int idx) throws Exception{
+        if(idx < 0 || idx>= this.size){
+            throw new Exception("NullPointer");
+        }
         if(idx == 0) return getFirst();
         else if(idx == this.size-1) return getLast();
         else{
