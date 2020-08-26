@@ -20,7 +20,7 @@ public class linkedlist{
         return this.size == 0;
     }
     // ================= add ============================
-    private void addFirtstNode(Node Node){
+    private void addFirstNode(Node node){
         if(this.head == null){
             this.head = node;
             this.tail = node;
@@ -32,7 +32,7 @@ public class linkedlist{
     }
     public void addFirst(int data){
         Node node = new Node(data);
-        addFirtstNode(node);
+        addFirstNode(node);
     }
 
     private void addLastNode(Node node){
@@ -52,7 +52,7 @@ public class linkedlist{
     }
 
     private void addNodeAt(int idx,Node node){
-        if(idx == 0) addFirtstNode(node);
+        if(idx == 0) addFirstNode(node);
         else if(idx == this.size) addLastNode(node);
         else{
             Node prev = getNodeAt(idx-1);
@@ -63,10 +63,13 @@ public class linkedlist{
             this.size++;
         }
     }
-    public void addAt(ind idx){
-        if(idx == 0) addFirst();
-        else if(idx == this.size-1) addLast();
-        else addNodeAt();
+    public void addAt(int idx,int data){
+        if(idx == 0) addFirst(data);
+        else if(idx == this.size-1) addLast(data);
+        else {
+            Node node = new Node(data);
+            addNodeAt(idx,node);   
+        }
     }
 
     //====================== Remove ================
@@ -87,7 +90,7 @@ public class linkedlist{
             throw new Exception("EmptyList");
         }
         Node rnode = removeFirstNode();
-        return new rnode.data;
+        return rnode.data;
         
     }
     private Node removeLastNode(){
@@ -129,20 +132,20 @@ public class linkedlist{
         if(idx < 0 || idx>= this.size){
             throw new Exception("NullPointer");
         }
-        node rnode = removeNodeAt(idx);
+        Node rnode = removeNodeAt(idx);
         return rnode.data;
 
     }
     // =====================  Get ========================
     public int getFirst() throws Exception{
         if(this.size == 0){
-            throw new Exception "EmptyList";
+            throw new Exception("EmptyList");
         }
         return this.head.data;
     }
     public int getLast() throws Exception{
         if(this.size == 0){
-            throw new Exception "EmptyList";
+            throw new Exception("EmptyList");
         }
         return this.tail.data;
     }
