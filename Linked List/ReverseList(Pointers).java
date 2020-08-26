@@ -42,6 +42,7 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+
   public static class Node {
     int data;
     Node next;
@@ -206,7 +207,7 @@ public class Main {
     public void reverseDI() {
       int li = 0;
       int ri = size - 1;
-      while(li < ri){
+      while (li < ri) {
         Node left = getNodeAt(li);
         Node right = getNodeAt(ri);
 
@@ -218,22 +219,21 @@ public class Main {
         ri--;
       }
     }
- 
-    public void reversePI(){
+
+    public void reversePI() {
       // write your code here
-        Node curr = head;
-        Node prev = null;
-        
-        while(curr!=null){
-            Node n = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = n;
-        }
-        
-        tail = head;
-        head = prev;
-      
+      Node curr = head;
+      Node prev = null;
+
+      while (curr != null) {
+        Node n = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = n;
+      }
+
+      tail = head;
+      head = prev;
     }
   }
 
@@ -280,9 +280,9 @@ public class Main {
       } else if (str.startsWith("removeAt")) {
         int idx = Integer.parseInt(str.split(" ")[1]);
         list.removeAt(idx);
-      } else if(str.startsWith("reverseDI")){
+      } else if (str.startsWith("reverseDI")) {
         list.reverseDI();
-      } else if(str.startsWith("reversePI")){
+      } else if (str.startsWith("reversePI")) {
         list.reversePI();
       }
       str = br.readLine();
