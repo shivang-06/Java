@@ -1,7 +1,7 @@
 public class stack{
     private int[] st;
     private int size;
-    private tos;//top of stack
+    private int tos;//top of stack
     private int maxSize;
 
     stack(){
@@ -10,9 +10,15 @@ public class stack{
     stack(int n){
         setValues(n);
     }
+    protected void setValues(int n){
+        this.st = new int[n];
+        this.size = 0;
+        this.tos = -1;
+        this.maxSize = n;
+    }
     
     @Override
-    public string toString(){
+    public String toString(){
         StringBuilder sb = new StringBuilder();
         sb.append("[");
         for(int i = this.tos ; i >= 0; i--){
@@ -22,12 +28,7 @@ public class stack{
         sb.append("]");
         return sb.toString();
     }
-    protected void setValues(int n){
-        this.st = new int[n];
-        this.size = 0;
-        this.tos = -1;
-        this.maxSize = n;
-    }
+    
     public int size(){
         return this.size;
     }
