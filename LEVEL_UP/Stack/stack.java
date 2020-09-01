@@ -32,12 +32,15 @@ public class stack{
     public int size(){
         return this.size;
     }
+    public int capacity(){
+        return this.maxSize;
+    }
 
     public boolean isEmpty(){
         return this.size == 0;
     }
 
-    private void push_(int val){
+    protected void push_(int val){
         this.st[++this.tos] = val;
         this.size++;
     }
@@ -47,7 +50,7 @@ public class stack{
         }
         push_(val);
     }
-    private int top_(){
+    protected int top_(){
         return this.st[this.tos];
     }
     public int top() throws Exception{
@@ -56,7 +59,7 @@ public class stack{
         }
         return top_();
     }
-    private int pop_(){
+    protected int pop_(){
         int rv = top_();
         this.st[this.tos--] = 0;
         this.size--;
